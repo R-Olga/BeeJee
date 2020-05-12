@@ -86,16 +86,13 @@ if(isset($_POST['save'])) {
         
         $row = $task_db->fetch_assoc();
         $task = $row['task_text'];
+        //$edit = $row['edit'];
         
         if ($task_text != $task) {
-            if((strpos($task, '(ред.администратором)') !== false)) {
-                $res = $mysqli->query('UPDATE assignment SET task_text ="'.$task_text.'", checkbox ="'.$checked.'" WHERE id="'.$id_save.'"') or die(mysqli_error($res));
-            } else {
-                $res = $mysqli->query('UPDATE assignment SET task_text ="'.$task_text.' (ред.администратором)", checkbox ="'.$checked.'" WHERE id="'.$id_save.'"') or die(mysqli_error($res));
-            }
+            $res = $mysqli->query('UPDATE assignment SET task_text ="'.$task_text.'", edit=", ред.администратором", checkbox ="'.$checked.'" WHERE id="'.$id_save.'"') or die(mysqli_error($res));
         }
         else {
-            $res = $mysqli->query('UPDATE assignment SET task_text ="'.$task_text.'", checkbox ="'.$checked.'" WHERE id="'.$id_save.'"') or die(mysqli_error($res));
+            $res = $mysqli->query('UPDATE assignment SET checkbox ="'.$checked.'" WHERE id="'.$id_save.'"') or die(mysqli_error($res));
         }
         
         header('Location: /index.php'); 

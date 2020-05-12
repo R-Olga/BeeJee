@@ -9,4 +9,4 @@ $result = $mysqli -> query($sql);
 ?>
 	<script>location.replace("/index.php");
 	alert("Запись успешно добавлена!");</script>
-		<?php 
+

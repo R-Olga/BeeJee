@@ -73,10 +73,14 @@ if(isset($_GET['page'])) {
             if($row['checkbox'] == 1) {
             $checked = 'Выполнено';
             } 
+            $edit = $row['edit'];
+            if($row['edit'] != null) {
+            $edit = ', ред.администратором';
+            } 
             echo "<tr><td>$username</td>
             <td>$email</td>
             <td>$task_text</td>
-            <td>$checked</td>
+            <td>$checked $edit</td>
             <td><button class='btn btn-primary' type='submit' name='button' form='data' value='$id'>Редактировать</button>
             <button class='btn btn-primary' type='submit' name='delete' form='data' value='$id'>Удалить</button></td></tr>";
         }
@@ -107,10 +111,14 @@ if(isset($_GET['page'])) {
                 if($row['checkbox'] == 1){
                 $checked = 'Выполнено';
                 } 
+                $edit = $row['edit'];
+                if($row['edit'] != null) {
+                $edit = ', ред.администратором';
+                } 
                     echo "<tr><td>$username</td>
                     <td>$email</td>
                     <td>$task_text</td>
-                    <td>$checked</td></tr>";
+                    <td>$checked$edit</td></tr>";
                 }
             echo "</tbody></table>";
             } else {
